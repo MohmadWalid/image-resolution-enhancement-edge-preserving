@@ -1,0 +1,23 @@
+Image,Scale,PSNR (dB),SSIM,FSIM
+Baby,x2,37.5321,0.9591,N/A
+Bird,x2,38.4676,0.9794,N/A
+Butterfly,x2,28.3851,0.9239,N/A
+Face,x2,34.9117,0.8701,N/A
+Woman,x2,33.0905,0.9556,N/A
+Monkey,x2,24.7139,0.7357,N/A
+Barbara,x2,27.5928,0.8624,N/A
+Coastguard,x2,29.6352,0.8289,N/A
+Foreman,x2,34.6132,0.9554,N/A
+Lena,x2,35.3174,0.9169,N/A
+Peppers,x2,35.2698,0.9082,N/A
+Baby,x4,30.9947,0.8579,N/A
+Bird,x4,29.5421,0.8762,N/A
+Butterfly,x4,21.1231,0.7131,N/A
+Face,x4,30.4344,0.7395,N/A
+Woman,x4,25.7393,0.8284,N/A
+Monkey,x4,20.8564,0.4509,N/A
+Barbara,x4,23.7714,0.6864,N/A
+Coastguard,x4,23.3746,0.4957,N/A
+Foreman,x4,28.3986,0.8539,N/A
+Lena,x4,28.8386,0.8070,N/A
+Peppers,x4,29.7902,0.8263,N/A
