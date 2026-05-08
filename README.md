@@ -1,6 +1,3 @@
-Here's an improved README with a clear structure section for your team:
-
-```markdown
 # Image Resolution Enhancement Using Optimized Edge-Preserving Interpolation
 
 A comparative study of image super-resolution techniques that upscale low-resolution images while preserving edge sharpness and texture details.
@@ -105,16 +102,5 @@ Each team member should upload their files following this structure:
 
 For questions or issues, contact any team member or create an issue in this repository.
 ```
-
----
-
-## Key Improvements:
-
-✅ **Clear folder structure diagram** - Visual guide for the team  
-✅ **Step-by-step upload instructions** - No confusion  
-✅ **File naming conventions** - Consistent naming  
-✅ **Team members listed** - Everyone's credited  
-✅ **Results table template** - Ready to fill in  
-✅ **Project timeline** - Track progress  
 
 This makes it **super easy** for your teammates to know exactly where to put their files! 🎯
