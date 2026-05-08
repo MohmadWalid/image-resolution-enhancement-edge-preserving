@@ -17,8 +17,6 @@ This project implements and compares multiple interpolation methods for image re
 - **Lanczos Interpolation**
 - **Optimized Edge-Preserving Method** (using B-spline + Cuckoo Search)
 
-Designed for applications in medical imaging, satellite imaging, surveillance, and multimedia.
-
 ## Repository Structure
 
 ```
@@ -89,18 +87,4 @@ Each team member should upload their files following this structure:
 | Optimized | TBD | TBD | TBD | TBD |
 
 *Table will be updated as results are completed.*
-
-## Project Timeline
-
-- [x] Project proposal submitted
-- [x] Repository setup
-- [ ] Individual method implementations
-- [ ] Results collection and comparison
-- [ ] Final report and presentation
-
-## Contact
-
-For questions or issues, contact any team member or create an issue in this repository.
-```
-
 This makes it **super easy** for your teammates to know exactly where to put their files! 🎯
