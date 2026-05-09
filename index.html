@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Resolution Enhancement Report</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #ffffff;
+    color: #111;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-top: 50px;
+    font-weight: normal;
+    font-size: 26px;
+}
+
+h3 {
+    margin-top: 25px;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    background: #fafafa;
+}
+
+.figure {
+    border: 2px dashed #bbb;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    margin: 20px 0;
+}
+
+.figure img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Image Resolution Enhancement</h1>
+
+<div class="subtitle">
+Bilinear • Bicubic • Lanczos • OLA e-Spline (Fixed-k + Cuckoo Search)
+</div>
+
+<hr>
+
+<!-- ABSTRACT -->
+<div class="section">
+<h2>1. Abstract</h2>
+
+<p>
+Low-resolution (LR) images suffer from significant degradation such as blurring, aliasing, and loss of fine structural details including edges and textures. These limitations reduce the performance of images in critical applications such as medical diagnosis, satellite imaging, and surveillance systems.
+</p>
+
+<p>
+This project investigates and compares classical interpolation methods—Bilinear, Bicubic, and Lanczos—with a proposed optimized edge-preserving framework based on OLA e-spline interpolation. The proposed method improves reconstruction quality through adaptive filtering, unsharp masking, spline-based reconstruction, and edge refinement. Additionally, Cuckoo Search optimization is used to dynamically tune enhancement parameters for improved performance.
+</p>
+
+</div>
+
+<!-- TEASER FIGURE -->
+<div class="section">
+<h2>2. Teaser Figure</h2>
+
+<div class="figure">
+<p>📌 Teaser Figure</p>
+
+<img src="Teaser_figure.PNG" alt="Teaser Figure">
+
+<p>
+Low Resolution → Interpolation Methods → Proposed OLA e-spline → High Resolution Output
+</p>
+</div>
+
+<p>
+The teaser figure demonstrates the complete super-resolution pipeline, highlighting how classical interpolation methods differ from the proposed optimization-based approach in terms of edge preservation and texture reconstruction.
+</p>
+
+</div>
+
+<!-- INTRODUCTION -->
+<div class="section">
+<h2>3. Introduction</h2>
+
+<p>
+Image resolution enhancement is a fundamental problem in computer vision that aims to reconstruct high-resolution images from low-resolution inputs. This task is inherently ill-posed because multiple high-resolution images can correspond to the same low-resolution representation.
+</p>
+
+<p>
+Classical interpolation techniques such as Bilinear, Bicubic, and Lanczos rely on fixed mathematical kernels. While they are computationally efficient, they fail to accurately reconstruct missing high-frequency details such as sharp edges and fine textures.
+</p>
+
+<p>
+To overcome these limitations, this project proposes a hybrid framework that integrates edge-preserving filtering, frequency enhancement, spline-based reconstruction, and optimization-based parameter tuning.
+</p>
+
+</div>
+
+<!-- RESULTS -->
+<div class="section">
+<h2>5. Experimental Results</h2>
+
+<!-- BICUBIC -->
+<h3>Bicubic Interpolation Results</h3>
+
+<div class="box">
+
+<div class="figure">
+<img src="Astronaut_triple.PNG" alt="Bicubic Result">
+</div>
+
+<p>
+Scale ×2 → PSNR: 32.57 dB, SSIM: 0.9040<br>
+Scale ×4 → PSNR: 27.77 dB, SSIM: 0.7644
+</p>
+
+<p>
+<b>Observation:</b> Bicubic interpolation provides strong reconstruction quality at lower scaling factors due to cubic smoothing. However, at higher scaling (×4), noticeable degradation occurs in the form of increased blurring and loss of fine edge details.
+</p>
+
+</div>
+
+<!-- BILINEAR -->
+<h3>Bilinear Interpolation Results</h3>
+
+<div class="box">
+
+<div class="figure">
+<img src="baboon_Scale_Factor_2.PNG" alt="Bilinear Result">
+</div>
+
+<p>
+Scale ×2 → Moderate PSNR/SSIM values<br>
+Scale ×4 → Significant quality degradation
+</p>
+
+<p>
+<b>Observation:</b> Bilinear interpolation produces smooth but overly blurred results. Due to its linear averaging mechanism, it fails to preserve high-frequency details, leading to weak edge definition and poor texture reconstruction.
+</p>
+
+</div>
+
+<!-- LANCZOS -->
+<h3>Lanczos Interpolation Results</h3>
+
+<div class="box">
+
+<p>
+Lanczos interpolation demonstrates better preservation of edges and textures compared to Bilinear and Bicubic methods due to its sinc-based kernel. It maintains higher frequency information more effectively, resulting in sharper visual outputs.
+</p>
+
+<p>
+However, slight ringing artifacts may appear near strong edges due to the oscillatory nature of the sinc function.
+</p>
+
+</div>
+
+<!-- PROPOSED -->
+<h3>Proposed OLA e-Spline (Fixed-k)</h3>
+
+<div class="box">
+
+<p>
+The proposed OLA e-spline method achieves improved perceptual quality by combining adaptive filtering, spline interpolation, and edge refinement. Unlike classical methods, it focuses on preserving structural consistency rather than only pixel-level accuracy.
+</p>
+
+<p>
+The Fixed-k configuration provides a balance between computational efficiency and reconstruction quality, making it suitable for practical applications.
+</p>
+
+</div>
+
+</div>
+
+<!-- CONCLUSION -->
+<div class="section">
+<h2>7. Conclusion</h2>
+
+<p>
+This study presents a comparative analysis of classical interpolation techniques and a proposed optimization-based super-resolution framework. While traditional methods such as Bilinear, Bicubic, and Lanczos are computationally efficient, they struggle to recover fine structural details.
+</p>
+
+<p>
+The proposed OLA e-spline method improves image reconstruction by integrating adaptive filtering, spline-based interpolation, and optimization-driven parameter tuning. Experimental results demonstrate improved edge preservation, better texture recovery, and higher perceptual quality.
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
