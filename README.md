@@ -77,14 +77,3 @@ Each team member should upload their files following this structure:
 3. Results will be generated automatically
 4. Download the CSV files and sample images
 
-## Results Summary
-
-| Method | Avg PSNR (×2) | Avg SSIM (×2) | Avg PSNR (×4) | Avg SSIM (×4) |
-|--------|---------------|---------------|---------------|---------------|
-| Bilinear | TBD | TBD | TBD | TBD |
-| Bicubic | TBD | TBD | TBD | TBD |
-| Lanczos | TBD | TBD | TBD | TBD |
-| Optimized | TBD | TBD | TBD | TBD |
-
-*Table will be updated as results are completed.*
-This makes it **super easy** for your teammates to know exactly where to put their files! 🎯
