@@ -104,8 +104,6 @@ We bridge the gap between classical interpolation (fast but blurry) and learning
 
 ### System Overview
 
-![Detailed Pipeline Diagram](docs/detailed_pipeline.png)
-
 The OLA e-spline pipeline processes each color channel independently and operates at any upscaling factor (we focus on ×2 and ×4 for evaluation).
 
 ---
