@@ -31,7 +31,6 @@ Low-resolution images frequently arise in bandwidth-constrained transmission sys
 - [Introduction](#introduction)
 - [Approach](#approach)
 - [Experiments and Results](#experiments-and-results)
-- [Qualitative Results](#qualitative-results)
 - [Conclusion](#conclusion)
 - [Repository Structure](#repository-structure)
 - [References](#references)
@@ -42,61 +41,32 @@ Low-resolution images frequently arise in bandwidth-constrained transmission sys
 
 ### Motivation
 
-High-resolution (HR) images are fundamental to modern applications across multiple domains:
+High-resolution (HR) images are essential in many fields such as medical imaging, satellite analysis, surveillance, and multimedia communication. However, many real-world systems capture or transmit low-resolution (LR) images because of hardware or bandwidth limitations.
 
-- **Medical Imaging:** Fine anatomical detail determines diagnostic accuracy
-- **Satellite & Remote Sensing:** Pixel-level texture distinguishes land-use classes  
-- **Surveillance & Face Recognition:** Sharpness determines subject identification capability
-- **Multimedia Communication:** Bandwidth constraints require compressed LR transmission with faithful HR reconstruction
+The goal of image super-resolution is to reconstruct a high-quality HR image from a degraded LR input while preserving sharp edges, textures, and visual quality.
 
-The core challenge: Given a degraded low-resolution (LR) image G<sub>LR</sub>, recover the original high-resolution image G<sub>HR</sub> that minimizes reconstruction error while preserving perceptual quality.
+### Limitations of Existing Methods
 
-### Limitations of Existing Approaches
-
-**1. Polynomial Interpolation Methods (Bilinear, Bicubic, Lanczos)**
-- ❌ **Problem:** Blur high-frequency regions (edges, textures)
-- ❌ **Artifacts:** Staircase/zigzag patterns along diagonal edges
-- ❌ **Root Cause:** Weighted-average formulation inherently smooths sharp transitions
-- ✅ **Advantage:** Computationally efficient
-
-**Example of edge blurring:**
-```
-Original edge:     ■■□□  (sharp)
-After Bilinear:    ■▓░□  (blurred gradient)
-```
-
-**2. Edge-Directed Methods (NEDI, ICBI, DCC)**
-- ✅ **Advantage:** Reduce staircase artifacts by adapting to edge direction
-- ❌ **Problem:** High computational cost (covariance estimation, multi-pass)
-- ❌ **Issue:** Introduce false edges in textured regions
-
-**3. Learning-Based Methods**
-- ✅ **Advantage:** Strong quality on training distribution
-- ❌ **Problem:** Tied to specific scale factors
-- ❌ **Issue:** Texture artifacts when scale changes
-- ❌ **Deployment:** Require large training datasets
-
-**4. Reconstruction-Based Methods**
-- ❌ **Problem:** Blur textures at large scale factors
-- ❌ **Computational:** Prohibitive for real-time use
+Traditional interpolation methods such as Bilinear, Bicubic, and Lanczos are fast but often produce blurry edges and staircase artifacts. Edge-directed methods improve edge preservation but are computationally expensive and may create false edges. Learning-based approaches achieve strong results but require large training datasets and retraining for different scale factors. Reconstruction-based methods also become slow and blurry at large upscaling ratios.
 
 ### Our Contribution: OLA e-spline
 
-We bridge the gap between classical interpolation (fast but blurry) and learning-based methods (sharp but inflexible) with a **scale-agnostic, training-free framework**:
+We propose **OLA e-spline**, a scale-agnostic and training-free super-resolution framework that combines adaptive filtering, edge enhancement, optimization, and cubic B-spline interpolation.
 
-**Key Components:**
-1. **Local Adaptive Filtering** - Variance-based adaptive blurring preserves edges
-2. **Unsharp Masking** - Extract high-frequency details
-3. **Cuckoo Search Optimization** - Find optimal sharpening gain k
-4. **Cubic B-Spline Interpolation** - C² continuous upsampling minimizes oscillations
-5. **Edge Expansion** - Post-processing sharpens detected edges
+The pipeline includes:
 
-**Advantages:**
-- ✅ Scale-agnostic (any upscaling factor, no retraining)
-- ✅ No training data required
-- ✅ Superior edge preservation (FSIM: 0.923 vs Lanczos: 0.879)
-- ✅ Practical speed (faster than Lanczos with fixed-k)
+1. Local adaptive filtering for edge-aware smoothing  
+2. Unsharp masking for high-frequency extraction  
+3. Cuckoo Search optimization to find the best sharpening gain  
+4. Cubic B-spline interpolation for smooth upscaling  
+5. Edge expansion and fusion for sharper final details  
 
+### Advantages
+
+- Works with different upscaling factors without retraining
+- Does not require training datasets
+- Preserves edges and textures effectively
+- Produces visually sharper results with practical computational cost
 ---
 
 ## Approach
