@@ -32,9 +32,8 @@ Low-resolution images frequently arise in bandwidth-constrained transmission sys
 - [Approach](#approach)
 - [Experiments and Results](#experiments-and-results)
 - [Qualitative Results](#qualitative-results)
-- [Conclusion and Future Work](#conclusion-and-future-work)
+- [Conclusion](#conclusion)
 - [Repository Structure](#repository-structure)
-- [How to Run](#how-to-run)
 - [References](#references)
 
 ---
