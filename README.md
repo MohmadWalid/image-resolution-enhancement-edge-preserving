@@ -431,41 +431,6 @@ Libraries:
   - scikit-image: PSNR, SSIM metrics
 ```
 
-**Processing Pipeline:**
-1. Split color image into BGR channels
-2. Process each channel independently through 5 steps
-3. Merge channels back to color image
-
-**Key Design Decisions:**
-
-**Q: Why 3×3 window for LA filtering?**
-- A: Balance between local adaptivity and computational cost
-- Larger windows (5×5) add ~2× compute without significant quality gain
-- Smaller windows (1×1) lose context
-
-**Q: Why 6 variance bands?**
-- A: Empirically optimal granularity
-- More bands (8+) don't improve results
-- Fewer bands (4) too coarse
-
-**Q: Why additive fusion instead of multiplicative?**
-- A: Preserves B-spline quality, adds corrections only where needed
-- Multiplicative would affect smooth areas
-
-**Obstacles Faced:**
-
-**1. CS Over-Sharpening**
-- **Problem:** Laplacian variance maximizes sharpness, not PSNR
-- **Solution:** Fixed-k variant (k=1.5) for stability
-
-**2. Python Edge Loop Bottleneck**
-- **Problem:** Pixel-by-pixel writes don't vectorize
-- **Solution:** Acceptable for offline processing; would need C/GPU for real-time
-
-**3. Original Reference Code Bug**
-- **Problem:** Modified G_HR in-place, skipping additive fusion
-- **Solution:** Correctly separated G_e before fusion
-
 ---
 
 ## Experiments and Results
@@ -511,22 +476,10 @@ Libraries:
 ### Evaluation Metrics
 
 **1. PSNR (Peak Signal-to-Noise Ratio)**
-
-```
-PSNR = 10 × log₁₀(255² / MSE)  [dB]
-
-MSE = (1/MN) Σ (Original - Upscaled)²
-```
-
 - **Measures:** Pixel-level fidelity
 - **Higher is better:** 20-40 dB typical
 
 **2. SSIM (Structural Similarity Index)**
-
-```
-SSIM = (2μ_xμ_y + C₁)(2σ_xy + C₂) / ((μ_x² + μ_y² + C₁)(σ_x² + σ_y² + C₂))
-```
-
 - **Measures:** Structural similarity (luminance, contrast, structure)
 - **Range:** [0, 1], higher is better
 - **Advantage:** Correlates better with human perception
@@ -597,8 +550,8 @@ We validated these parameters empirically:
 ![PSNR Comparison Chart](results/psnr_comparison.png)
 *Average PSNR for each method at ×2 and ×4 scales*
 
-![Metrics Heatmap](results/metrics_heatmap.png)
-*PSNR, SSIM, FSIM heatmap across all test images*
+![Results Summary](results/results_summary.png)
+*PSNR, SSIM, FSIM across all test images*
 
 ---
 
