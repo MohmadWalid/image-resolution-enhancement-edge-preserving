@@ -631,12 +631,6 @@ We presented **OLA e-spline**, an optimized edge-preserving interpolation framew
 - Scale-agnostic (any upscaling factor)
 - No training data required
 
-**Applications:**
-- Medical imaging (diagnostic detail)
-- Satellite analysis (land classification)
-- Surveillance (face recognition)
-- Consumer electronics (display upscaling)
-
 ---
 
 ## Repository Structure
@@ -667,9 +661,8 @@ image-resolution-enhancement/
     ├── ola/
     │   ├── ola_results.csv
     │   └── sample_outputs/
-    ├── final_comparison.csv
     ├── psnr_comparison.png
-    └── metrics_heatmap.png
+    └── results_summary.png
 ```
 
 ---
