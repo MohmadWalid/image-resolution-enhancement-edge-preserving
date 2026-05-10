@@ -654,29 +654,22 @@ image-resolution-enhancement/
 │   ├── bicubic_interpolation.ipynb    # Bicubic baseline
 │   ├── lanczos_interpolation.ipynb    # Lanczos baseline
 │   └── ola_espline.ipynb              # OLA e-spline (proposed)
-├── results/
-│   ├── bilinear/
-│   │   ├── bilinear_results.csv
-│   │   └── sample_outputs/
-│   ├── bicubic/
-│   │   ├── bicubic_results.csv
-│   │   └── sample_outputs/
-│   ├── lanczos/
-│   │   ├── lanczos_results.csv
-│   │   └── sample_outputs/
-│   ├── ola/
-│   │   ├── ola_results.csv
-│   │   └── sample_outputs/
-│   ├── final_comparison.csv
-│   ├── psnr_comparison.png
-│   ├── metrics_heatmap.png
-│   └── qualitative/                    # Visual comparisons
-└── src/
-    ├── local_adaptive_filter.py
-    ├── cuckoo_search.py
-    ├── bspline_interpolation.py
-    ├── edge_expansion.py
-    └── utils.py
+└── results/
+    ├── bilinear/
+    │   ├── bilinear_results.csv
+    │   └── sample_outputs/
+    ├── bicubic/
+    │   ├── bicubic_results.csv
+    │   └── sample_outputs/
+    ├── lanczos/
+    │   ├── lanczos_results.csv
+    │   └── sample_outputs/
+    ├── ola/
+    │   ├── ola_results.csv
+    │   └── sample_outputs/
+    ├── final_comparison.csv
+    ├── psnr_comparison.png
+    └── metrics_heatmap.png
 ```
 
 ---
