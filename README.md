@@ -733,7 +733,7 @@ The **edge-expansion stage** is responsible - averaging detected edge pixels wit
 
 ---
 
-## Conclusion and Future Work
+## Conclusion
 
 ### Conclusion
 
@@ -763,46 +763,6 @@ We presented **OLA e-spline**, an optimized edge-preserving interpolation framew
 - Satellite analysis (land classification)
 - Surveillance (face recognition)
 - Consumer electronics (display upscaling)
-
----
-
-### Future Work
-
-**1. Deep Learning Integration**
-
-Train CNN to predict optimal G_e correction map:
-- Replace hand-crafted Canny+directional pipeline
-- Potential for texture recovery beyond local operators
-- Challenge: Requires training dataset
-
-**2. Video Super-Resolution**
-
-Extend to video with temporal consistency:
-- Optical flow estimation
-- Temporal filtering in LA stage
-- Inter-frame edge consistency
-- Challenge: Flickering artifact prevention
-
-**3. Real-Time Hardware Implementation**
-
-FPGA/ASIC pipeline for 1080p@30fps:
-- LA filter, USM, B-spline map to line buffers
-- Fixed-k variant for deterministic timing
-- Target: Mid-range FPGA, <100ms latency
-
-**4. Perceptual Loss Optimization**
-
-Replace Laplacian variance with LPIPS:
-- Better alignment with human judgment
-- Address CS over-sharpening
-- Requires pre-trained model
-
-**5. Domain-Specific Evaluation**
-
-Quantify value in high-stakes applications:
-- **Medical:** CT/MRI diagnostic accuracy
-- **Satellite:** Land-use classification performance
-- **Surveillance:** Face recognition accuracy
 
 ---
 
@@ -848,27 +808,6 @@ image-resolution-enhancement/
 
 ---
 
-## How to Run
-
-### Prerequisites
-
-```bash
-pip install opencv-python scikit-image matplotlib numpy pandas scipy seaborn
-```
-
-### Running Experiments
-
-**Bilinear Baseline:**
-```bash
-jupyter notebook notebooks/bilinear_interpolation.ipynb
-# Run all cells → Generates results/bilinear/bilinear_results.csv
-```
-
-**OLA e-spline (Proposed):**
-```bash
-jupyter notebook notebooks/ola_espline.ipynb
-# Run all cells → Generates results/ola/ola_results.csv
-```
 
 ### Dataset
 
@@ -876,23 +815,6 @@ Test images automatically download from:
 - USC-SIPI database
 - Set5/Set14 benchmarks
 
-Or place your own images in `images/original/`.
-
-### Comparing Results
-
-```python
-import pandas as pd
-
-# Load all results
-bilinear = pd.read_csv('results/bilinear/bilinear_results.csv')
-ola = pd.read_csv('results/ola/ola_results.csv')
-
-# Compare averages
-print("Bilinear avg PSNR:", bilinear['PSNR (dB)'].mean())
-print("OLA avg PSNR:", ola['PSNR (dB)'].mean())
-```
-
----
 
 ## References
 
